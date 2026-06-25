@@ -1,0 +1,16 @@
+main:
+  - name: About
+    url: /
+    weight: 10
+  - name: Current Work
+    url: /#current-work
+    weight: 20
+  - name: Publications
+    url: /#papers
+    weight: 30
+  - name: News
+    url: /#news
+    weight: 40
+  - name: CV
+    url: uploads/cv.pdf
+    weight: 50
