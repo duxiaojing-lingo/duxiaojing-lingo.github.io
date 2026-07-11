@@ -343,6 +343,85 @@ section {
   border-radius: 50%;
 }
 
+/* ── Hero title (logo-style) ── */
+.hero-title-block { margin-bottom: 10px; }
+.hero-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 52px;
+  color: var(--gold);
+  text-shadow:
+    3px 3px 0 var(--outline),
+    -2px -2px 0 var(--outline),
+    2px -2px 0 var(--outline),
+    -2px 2px 0 var(--outline);
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+.hero-subtitle {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── Mountains ── */
+.mountains {
+  position: absolute;
+  bottom: 76px;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mountain {
+  position: absolute;
+  bottom: 0;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  opacity: 0.55;
+}
+
+/* ── Flying Junimo ── */
+.flying-junimo {
+  position: absolute;
+  top: 40px;
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  animation: flyAcross 15s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 0 rgba(0,0,0,0.15));
+}
+@keyframes flyAcross {
+  0%   { left: -8%;  top: 40px; }
+  25%  { top: 70px; }
+  50%  { left: 52%;  top: 20px; }
+  75%  { top: 65px; }
+  100% { left: 104%; top: 40px; }
+}
+
+/* ── Shining Stardrop ── */
+.stardrop {
+  position: absolute;
+  top: 10px;
+  right: 6%;
+  width: 30px;
+  height: 30px;
+  image-rendering: pixelated;
+  animation: stardropShine 2.4s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+@keyframes stardropShine {
+  0%,100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 3px rgba(255,255,255,0.6)) brightness(1); }
+  50%      { transform: scale(1.18) rotate(10deg); filter: drop-shadow(0 0 10px rgba(255,255,255,0.95)) brightness(1.3); }
+}
+
 /* ======================== ABOUT ======================== */
 .about-grid {
   display: grid;
@@ -802,8 +881,22 @@ footer {
 
 <!-- ── HERO ── -->
 <section id="home">
+  <div class="hero-title-block">
+    <div class="hero-title">Phonetics Valley</div>
+    <div class="hero-subtitle">Xiaojing Du</div>
+  </div>
+    <img class="flying-junimo" src="data:image/gif;base64,R0lGODlhMAAwAPIFAEfLGwQ9D43wMzKGHKW1gwAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJDwAFACwAAAAAMAAwAAAD/1i63P4wykmrvThHwHX4msMBHhgyYxmcz+e+bhSzCmyv0EzfsGwyugXvNRIYj8HaT7hUDgPFozFZoFqfUI502qx2da6o1DYoi8HfX1i7JZvZAjQOqP6IkbDy4FyfM+cuRyN6hIViejYOcoIchY57cIg9DYtGg4+Eh2WJlHlljCMAW6MClwNUfy56oHekpY2bXakfq5ahoq6gkn45tG+3wMHBqJ0BesLIycR0xr/JzyPLf9DUt9JO1dkA115Z2tDca6HiyOQc4XbW6crr0bLFwObD7efvzMCswvnb9tO3+/hsjeuH7Z9AZPvQNYMU7NgtAhAj7qKgytkth6EiSozFq0eFL4bAMI7QCHGiBRckCWQziQElyZUcVaSEeYqgBHmmhtAo2JAjpx30Qu36ubObzmLcKGJRNAnoE6YvWBAterIp1apRry5IAAAh+QQJDwAFACwDAAMAKgAtAAAD/1i63A7QyUkpBDXrF7cMoFeAgUY6p5dW69Jm7xcqsUveOE7le+7fPeDkRywNdQ2SYMm8KJnLGC8Jgi6dVasUyXhCsQGrYCscZQWXgTqnHlyYq6k5fIW02ep3dDaPn9NrOG16Y3xEbU12bYuLhHdFAYh1AIyVbhBMj0WSaIqWg5hLmn6ReaFiqImUgUZdIKAAqbKdqwNksLOpgLZ8NgEXwMHCw8FkxMfIYCggyc3Dxs7RENDSztTVydfTzNncwNoAJM3ixb003mDj6NutvsKqx/Dsy7/B8sP34Pfvk8pUpQMICBwoDNbAgZrotTkosKApAAwJJPy3kKHDSxAZTpQBEClbrRoUH0rbGATWSFYiIKlsp2JlERG+XPpIyYVmmSAgWdQ8crNlzwIJAAAh+QQJDwAFACwDAAMAKgAtAAAD/1garP7wgRkrZMHqMsG22Fd1ohOCWJqWV4OqKvucFQzLpjszQu93tlhrNfT9JkHiTpkLGHvApK5JwxwBgyzsKYhmFsKCFTrJDrZPL1U37pa1Kq4abDNfzfh8x1cN2slYeYJ7PX11WXeCehN8bI4BZoRcRh2SZjd0kYyTlJUAPpdhGJqfnFeWcEoYnqytroFnU3SvtK6hX0u1upW3Eau7wEiyYgzBwTRNxsDIs56/tM9zuc7FtdHCuMnUAbrXAMzE3J6nruTfw97mrObg6YCv7OgMZgT19qyk+Km+81n2957yBdw3hN4/AvoGvOr1QiCtgwTA8YOUJRhEiQUrArs4TCtDEofSZHzU2ArjhpEKXZmc2E5KNhaYliTBQaelFJo4ZXbMeTIMzxIxIyQAACH5BAUPAAUALAMAAwAqAC0AAAP/WLrcDtDJSSkENesXtwygV4CBRjqnl1br0mbvFyqxS944TuV77t894ORHLA11DZJgybwomcsYLwmCLp1VqxTJeEKxAatgKxxlBZeBOqceXJirqTl8hbTZ6nd0No+f02s4bXpjfERtTXZti4uEd0UBiHUAjJVuEEyPRZJoipaDmEuafpF5oWKoiZSBRl0goACpsp2rA2Sws6mAtnw2ARfAwcLDwWTEx8hgKCDJzcPGztEQ0NLO1NXJ19PM2dzA2gAkzeLFvTTeYOPo262+wqrH8OzLv8Hyw/fg9++TylSlAwgIHCgM1sCBmui1OSiwoCkADAkk/LeQocNLEBlOlAEQKVutGhQfStsYBNZIViIgqWynYmUREb5c+kjJhWaZICBZ1Dxys2XPAgkAADs=" alt="" aria-hidden="true">
+    <img class="stardrop" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAJLklEQVR42rVZ+28U1xVeGzusjXk45IEf6/V7vevFLxQqGqcRSgy48oMU3P4BTopNSX8iJRC8u96HwSi0KSWEJG7TAOXxQ38nEQlgu7RVQppKUVOL2NQ2BKMIlPaHKkXtftV3xjM7O7uzO2s7I13N+t57zvnOved899yxzWbhqWnYjKzCZixb25LQ2M9xW4bPt6HT/FnTlNSQ2myFzZkbMwGv6VzTtHAHuvt+lBWHv3QjsnK8yM71wpbn0VrWyvWwFXhhf7QlzljLxs1ZRp3GPpEp8Co6dDppg7ZoMxWmtM+W3h5Ud3WgaUcXynEy6sAISnEST49ew1PXxtE6ehXrI8ewfvh1NAd/HhVAhc2oa/ie6crJWGGzOEwZylIHdVEnddMGbdEmbRMDsWS8CxR0be+E65ltKMHbKMUJFOM4Wi9+iO9euoQnr1yGx/8q6oO/ECdsK7zpw2k+bDiXMpSlDuqiTuqmDdqiTdomBmLJOGyaerrhemYrXD/8AUrwhih2PDiB1ktXxOCm996Hx39UcyD74WbYVjfhoUc2mBqTsdVNMjfmwFHRRZ3UTRu0RZu0TQzEYimctLDp6Ublg+NRrgIVbXrvIlovKgbqD70Gj+9VDXx96DV49gXgfq4D7p1dWL+zK+rNj8CTH45r7OMY53AuZSirOkGd1E0btEWbtE0MxEJMacOppns+bNpiYVOC10WhFjY+JWziWuiXcHW2i2xtTzs8uYcSHGAfx0R/Z7vIGPVQdyycLottLZzalHAiRlMHRPn2TtRtaUcJ3hIFlV//Bq2Xx/Hk2Bg2ffABvEzcw8fjmjdyHK7tW+Ha8X14OnagPj+MGrsPNXl+pdl90scxzuFcyiTqOSY2aIs2aZsYiIWYVHyWHVC8fxOu7R2obd+Cus5tShLO01/26kbkrtuInKInUF+5F+7Sl1Bf9AoOOicxVH4XkfI70vj7oPMLGZM5lXtFhrLUodIxddMGbdEmbSsYFuTA27Hte1bZPvfObthWGQ41Ju9aL7z2I/DYI6jLC2GofA4B50xcoyPfKfgV3PawzKUMZeMOr1VNYkNwPLstDkNmDmxtR+k3x1CCES2Bars74d7RBfsjGxJOzey1DfDmDUcZ6zV5PgGrAn+l5JY0X+kdtBW+i7q8oMyljFEPddMGbcWIZESwEJNlB1QnmDhGCjN71GRlzKsOEPjnz1/DzIuj+KJvDGU5fi2pregUKm/bFgfesgNqs3SI6Byolh1QQsjnmMX0nlHc2DWOL1/8E2rtwYwc0A5TQ7PiQFSlLDPefa4xHHeYeFYEUG0fQMOKwwiX34GvbBbHG29gctfHmHj+OmZ3f4xu51FULB8A56bSpT+XNGqfx2R5B6ycfO2uMOrsYQEUqp6Kkm3Cuvjf9/g94Ew5cLYEn73UC1/xPWEkzqUMZanDSmVgaQdUb1MeFvrizK6EAxMzkoR59tOB8w7gXRdmBntwoOireUaaExmRtVsLJ0vYuGVVndarPwGQH8RTq0/CXzqnMY7qwIF1X+E/b7YAF0rwzckNCFVOYt9j9zFQ9LXIUNZqPqTFZtwyK/W3mpDOXL+wDNmGrBNzYlqcIOhQ5RT+O9IAXHDgf++44cg+ZDmhF4LN0uPOUwCU5QSEZcg2ZB39Lmj58Nh9JZze8QAXquDIGs6IkdI+ZkyQ6nni0RBKbEfgzovg9p4/igP/+ImJA2pCn2ZSV8KZE0a13ZfASIvCqrFKfurGlSf4B79ujHI1CYhUaeaAkVInd32EQOldSWaVkdLZVBPejLXiWCVOKD+YVFmx7YiEgoTEaafmgFkI6Q+1yf4xHCi+pTGS7ES+NdspWUs/sTbPL1RHtmCSlucGpJVlD0vYtKyKAGcrBPyDt1ow1fcRZvaM4rPe0fnVvRPX2McxJvrEC+MIVswoTpTelXBiTlC3aoc2hanygoJFjy2tAxQ4WDYlVSXpkQzDJJ3t/6sC+ny1vP/2whVM9P5FwEeqb2iAmlceklVV7wP8zT6OcQ7B0wnuyN97r0sIqjppg7Zok7aJgVj0TqQNIVaUPDHVgoyrxq1nmEgSStiUY6L3E+nnyqshMWQSEuxTy2zONdU5H4ocV0ORWIgpbQgllgZz2tZztZiEwiTnyuTNv6d1YTOUKimXQGfKJE5enMW2nklIJiEd7l93T978m/36sElFi0ul0xLlq+Gk33rSoZEeVSapsg9oFJvu4OPcSBqd+lC0Wi+lDCcaJJuo9Y6eKtlf+ZAfZcsC2PBwyNQYxziHc5Pd2tgU1rIYNlZPOnXraXiy7w8JNQ/f7J/76Z/x+a4r0ebCENTVVneFfRzjHM7Vy6q3NvbTxoLDJi292oNxNY/KPMIq84cUATqW+ROSmH0cM7IW34u5tVl2wJ0fRkNBBLP9nwrVqdy/v+i2xusENtU/jqaVh6XA0w6/nID0cYxz1IOMstRBXXJr6/9UbLi/DQdkFbOGE07faT2g4lvwl98UoFzN23uUxt/s49h+w0FGHdRFndS95FVqggM8MQ31j7620YeTvhnDhjKxg8yp6DxfvTQOmCWxMycUc+BUhebAzd1jCQlt3AFj4lJGc+BUhaLzXI3YWJIkTkajvuJ/4t8nNgK/rYtzQF9Cq5Tq1OUAf+upk3Mpk+DAWScGiv61eBo1O8he5qXkdE3KEpp1i3ktFKuvVOaJC6FzTrm5qXrkE0x+GK7lFhxIV0owbn2OL4Ez5iU0jQ5WTaIqdzCxFioIYLBK+fSildbGJD5TgUjVTbz8OC/+9+U7Us3yIBrXhJDZjcyk8OK2c8X0NBpfQg8I+Ksje0eTkkGB8vFLvygajfZ+gokfjyoLdKoGs+EOzOy+Lvkz0Xc1Sie4E5ZuZDW6z4P6ctqMVZSwia+Ffj/8syzzsBzQwknPWnRCK61/59BClAcg88jyjSzZB1p1B9imE8JmKsrVpfLNFYOmBjgmTiQJJ/PSekwuN7yhWb6R6R0wFltaIacLGwLS69nqCiSsvrHPGE6pSmvezCx9CIs54Ev6Twp9W2y5m0m5PqT7FJnxndh4OU9W7j5dFsrYAcokK9eNLaM7sfGrBHdC+0ddXEs8KduqQ5ZPSuNc6kply/JXCSsftSx9n1lgOC3a7hbXYUtf5jiHc5fKgcXY/T8J9+TgbCeVuwAAAABJRU5ErkJggg==" alt="" aria-hidden="true">
   <!-- Sky scene with trees and Junimos -->
   <div class="hero-scene">
+
+    <!-- Mountains -->
+    <div class="mountains" aria-hidden="true">
+      <div class="mountain" style="left:-6%;width:220px;height:110px;background:#8fb5ad"></div>
+      <div class="mountain" style="left:14%;width:170px;height:80px;background:#a7c9c2"></div>
+      <div class="mountain" style="right:22%;width:190px;height:95px;background:#a7c9c2"></div>
+      <div class="mountain" style="right:0%;width:230px;height:120px;background:#8fb5ad"></div>
+    </div>
 
     <!-- Accent bursts (sparse) -->
     <svg class="pixel-burst" viewBox="0 0 12 12" width="24" height="24" style="top:2%;left:6%;animation-delay:0s" aria-hidden="true">
