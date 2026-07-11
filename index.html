@@ -990,7 +990,81 @@ footer {
 </div>
 
 <!-- ── QUEST LOG ── -->
-<!-- PLACEHOLDER_QUESTS -->
+<section id="quests">
+  <h2 class="section-title">📜 Quest Log</h2>
+  <p class="section-sub">completed and in-progress quests</p>
+  <p class="reveal" style="text-align:center;color:var(--parchment);font-size:20px;margin-bottom:24px">Every researcher's farm grows through the quests they complete. Tap any scroll to read more. ▾</p>
+
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+    <div class="quest-top">
+      <div class="quest-icon">🌾</div>
+      <div>
+        <span class="quest-tag">MAIN QUEST · 2025 · Under Review</span>
+        <h4>Phonation in Jin Chinese: A Frame-Level Voice Quality Analysis</h4>
+        <p class="authors">Du, X., Post, B., &amp; Nolan, F.</p>
+        <p class="venue">Submitted to Journal of Phonetics</p>
+      </div>
+    </div>
+    <div class="quest-detail">The first study to apply frame-level voice quality probes (trained on SSL features) to Jin Chinese tones. Reveals that creaky phonation is not merely paralinguistic but tonally contrastive in this under-studied Sinitic variety.</div>
+    <div class="toggle-hint">▾ tap to expand</div>
+  </div>
+
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+    <div class="quest-top">
+      <div class="quest-icon">🗺️</div>
+      <div>
+        <span class="quest-tag">MAIN QUEST · 2024</span>
+        <h4>Automatic Frame-Level Voice Quality Labelling Using Self-Supervised Speech Representations</h4>
+        <p class="authors">Du, X., Post, B., &amp; Nolan, F.</p>
+        <p class="venue">Interspeech 2024, Kos, Greece</p>
+      </div>
+    </div>
+    <div class="quest-detail">Introduced a frame-level VQ labelling pipeline using SSL models (wav2vec 2.0, HuBERT) fine-tuned on annotated corpora. Demonstrated that mid-network layers carry the richest phonation-type signal — a key finding for interpretable voice AI.</div>
+    <div class="toggle-hint">▾ tap to expand</div>
+  </div>
+
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+    <div class="quest-top">
+      <div class="quest-icon">🌻</div>
+      <div>
+        <span class="quest-tag">SIDE QUEST · 2025</span>
+        <h4>Tonal Perception and the Huojia Minimal Pair: Listener Sensitivity to Phonation Cues</h4>
+        <p class="authors">Du, X., Post, B., &amp; Nolan, F.</p>
+        <p class="venue">ICPhS 2027 (in preparation)</p>
+      </div>
+    </div>
+    <div class="quest-detail">A perception experiment using resynthesised Huojia Jin minimal pairs to isolate which acoustic dimensions (F0, VQ, duration) listeners use to distinguish tones. Directly tests Lu et al.'s theoretical claims with Cambridge participants.</div>
+    <div class="toggle-hint">▾ tap to expand</div>
+  </div>
+
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+    <div class="quest-top">
+      <div class="quest-icon">🔭</div>
+      <div>
+        <span class="quest-tag">CROSSOVER QUEST · 2025</span>
+        <h4>Galaxy Mergers in the Epoch of Reionization: Merger Rates at z = 4.5–8.5</h4>
+        <p class="authors">Duan, Q., Conselice, C. J., et al., incl. Du, X.</p>
+        <p class="venue">Monthly Notices of the Royal Astronomical Society, 540, 774–805</p>
+      </div>
+    </div>
+    <div class="quest-detail">Statistical contribution to a large-scale JWST galaxy survey — proof that a phonetician's statistics toolkit travels well beyond linguistics. A detour into astrophysics that unexpectedly broadened the research horizon.</div>
+    <div class="toggle-hint">▾ tap to expand</div>
+  </div>
+
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+    <div class="quest-top">
+      <div class="quest-icon">🔭</div>
+      <div>
+        <span class="quest-tag">CROSSOVER QUEST · 2026</span>
+        <h4>Galaxy Mergers in the Epoch of Reionization II: Merger-Triggered Star Formation and AGN Activities at z = 4.5–8.5</h4>
+        <p class="authors">Duan, Q., Conselice, C. J., et al., incl. Du, X.</p>
+        <p class="venue">Monthly Notices of the Royal Astronomical Society, 546, stag008</p>
+      </div>
+    </div>
+    <div class="quest-detail">A follow-up statistical contribution continuing the JWST galaxy-merger collaboration. Same rigour, bigger cosmic stakes.</div>
+    <div class="toggle-hint">▾ tap to expand</div>
+  </div>
+</section>
 
 <!-- TREE DIVIDER 4 -->
 <div class="tree-divider" aria-hidden="true">
@@ -1002,7 +1076,77 @@ footer {
 </div>
 
 <!-- ── TREASURE CHEST ── -->
-<!-- PLACEHOLDER_TREASURE -->
+<section id="treasure">
+  <h2 class="section-title">💰 Treasure Chest</h2>
+  <p class="section-sub">loot found along the journey</p>
+
+  <div class="treasure-grid">
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2026</span>
+      <span class="trophy">🏅</span>
+      <div class="amount">£5,000</div>
+      <h4>Cambridge Language Sciences Incubator Fund</h4>
+      <div class="org">University of Cambridge</div>
+      <div class="desc">PI · "Hearing Every Voice: Interpretable Voice Quality Labelling for Inclusive AI"</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2026</span>
+      <span class="trophy">🎪</span>
+      <div class="amount">£500</div>
+      <h4>TAL Research Area Workshop Fund</h4>
+      <div class="org">University of Cambridge</div>
+      <div class="desc">Lead organiser · Tone, Stress and Prosody Workshop</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2026</span>
+      <span class="trophy">🎒</span>
+      <div class="amount">£500</div>
+      <h4>Boak Student Support Fund</h4>
+      <div class="org">Clare Hall, University of Cambridge</div>
+      <div class="desc">Conference travel &amp; presentation</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2026</span>
+      <span class="trophy">🧭</span>
+      <div class="amount">£400</div>
+      <h4>MMLL PhD Research Fund Award</h4>
+      <div class="org">University of Cambridge</div>
+      <div class="desc">Fieldwork &amp; data collection</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2025–</span>
+      <span class="trophy">🎓</span>
+      <div class="amount">Scholar</div>
+      <h4>Cambridge Trust Scholarship</h4>
+      <div class="org">University of Cambridge</div>
+      <div class="desc">Doctoral study funding</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2025–</span>
+      <span class="trophy">🌏</span>
+      <div class="amount">Scholar</div>
+      <h4>China Scholarship Council Scholarship</h4>
+      <div class="org">China Scholarship Council</div>
+      <div class="desc">Overseas doctoral study funding</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2023</span>
+      <span class="trophy">💰</span>
+      <div class="amount">$4,000</div>
+      <h4>Wake Forest Research Fellowship</h4>
+      <div class="org">Wake Forest University</div>
+      <div class="desc">Community structure of tense vowels, Central Plains dialect</div>
+    </div>
+    <div class="treasure-tile reveal">
+      <span class="year-badge">2022</span>
+      <span class="trophy">🖋️</span>
+      <div class="amount">$2,000</div>
+      <h4>Wake Forest Arts &amp; Humanities Research Fellowship</h4>
+      <div class="org">Wake Forest University</div>
+      <div class="desc">Vocalic differences via vowel distance &amp; Partitioned Local Depth</div>
+    </div>
+  </div>
+</section>
 
 <!-- TREE DIVIDER 5 -->
 <div class="tree-divider" aria-hidden="true">
