@@ -995,7 +995,7 @@ footer {
   <p class="section-sub">completed and in-progress quests</p>
   <p class="reveal" style="text-align:center;color:var(--parchment);font-size:20px;margin-bottom:24px">Every researcher's farm grows through the quests they complete. Tap any scroll to read more. ▾</p>
 
-  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
     <div class="quest-top">
       <div class="quest-icon">🌾</div>
       <div>
@@ -1009,7 +1009,7 @@ footer {
     <div class="toggle-hint">▾ tap to expand</div>
   </div>
 
-  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
     <div class="quest-top">
       <div class="quest-icon">🗺️</div>
       <div>
@@ -1023,7 +1023,7 @@ footer {
     <div class="toggle-hint">▾ tap to expand</div>
   </div>
 
-  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
     <div class="quest-top">
       <div class="quest-icon">🌻</div>
       <div>
@@ -1037,7 +1037,7 @@ footer {
     <div class="toggle-hint">▾ tap to expand</div>
   </div>
 
-  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
     <div class="quest-top">
       <div class="quest-icon">🔭</div>
       <div>
@@ -1051,7 +1051,7 @@ footer {
     <div class="toggle-hint">▾ tap to expand</div>
   </div>
 
-  <div class="quest-card reveal" onclick="this.classList.toggle('open')">
+  <div class="quest-card reveal" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
     <div class="quest-top">
       <div class="quest-icon">🔭</div>
       <div>
@@ -1263,7 +1263,7 @@ footer {
   <p class="section-sub">dispatch a message to the farmer</p>
 
   <div class="pixel-panel mailbox-wrap reveal">
-    <span class="mailbox-icon" onclick="revealEmail()" title="Click to reveal email">📬</span>
+    <span class="mailbox-icon" onclick="revealEmail()" title="Click to reveal email" role="button" tabindex="0" onkeydown="if(event.key==='Enter')revealEmail()">📬</span>
     <p style="font-size:22px;color:var(--ink-soft)">The mailbox is always open.<br>Click the envelope to reveal my address.</p>
     <div class="email-reveal" id="emailReveal">xed20@cam.ac.uk</div>
     <p style="margin-top:18px;font-size:20px;color:var(--ink-soft)">
