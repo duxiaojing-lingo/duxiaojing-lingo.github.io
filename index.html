@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xiaojing Du ✦ Farm of Phonetics</title>
+<meta name="description" content="Xiaojing Du — PhD researcher in voice quality and tone, Cambridge Phonetics Laboratory">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   XIAOJING DU — FARM OF PHONETICS
+   Stardew Valley–inspired academic portfolio
+   ========================================================= */
+
+:root {
+  --sky-top: #5bc8f5;
+  --sky-bottom: #c8eefb;
+  --grass-bright: #a8e063;
+  --grass: #6ab04c;
+  --grass-dark: #388e3c;
+  --gold: #f9ca24;
+  --gold-dark: #e6990a;
+  --wood: #c8864a;
+  --wood-dark: #7d4f27;
+  --parchment: #fef9e7;
+  --parchment-dark: #f5e6c8;
+  --ink: #3d2b1f;
+  --ink-soft: #6b5544;
+  --heart: #ff6b9d;
+  --heart-empty: #f0cece;
+  --accent-blue: #4fc3f7;
+  --accent-green: #69f0ae;
+  --accent-purple: #ce93d8;
+  --red: #e74c3c;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  color: var(--ink);
+  background: #6ab04c;
+  overflow-x: hidden;
+  image-rendering: pixelated;
+}
+
+h1, h2, h3, .pixel-font {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
+}
+
+/* ── Fixed sky background ── */
+.sky-layer {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100vh;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 60%, var(--grass) 60%, var(--grass-dark) 100%);
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Pixel clouds ── */
+.cloud {
+  position: absolute;
+  background: #fff;
+  opacity: 0.92;
+  border-radius: 2px;
+  box-shadow:
+    16px 6px 0 #fff,
+    32px 0  0 #fff,
+    -16px 6px 0 #fff,
+    8px  -6px 0 #fff,
+    24px -6px 0 #fff;
+}
+.cloud1 { width:40px;height:14px;top:7%;left:-10%;animation:driftCloud 55s linear infinite; }
+.cloud2 { width:28px;height:10px;top:15%;left:-25%;animation:driftCloud 70s linear infinite;animation-delay:-22s; }
+.cloud3 { width:50px;height:16px;top:4%;left:-40%;animation:driftCloud 90s linear infinite;animation-delay:-45s; }
+.cloud4 { width:34px;height:12px;top:20%;left:-15%;animation:driftCloud 80s linear infinite;animation-delay:-10s; }
+@keyframes driftCloud {
+  from { transform: translateX(0); }
+  to   { transform: translateX(150vw); }
+}
+
+/* ── Nav ── */
+nav.signpost {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--wood-dark);
+  border-bottom: 4px solid #4a2e0f;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+nav.signpost a {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--parchment);
+  text-decoration: none;
+  background: var(--wood);
+  padding: 8px 10px;
+  border-bottom: 3px solid var(--wood-dark);
+  transition: transform 0.1s, background 0.1s;
+  white-space: nowrap;
+}
+nav.signpost a:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+}
+nav.signpost .brand {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 #000;
+  margin-right: 12px;
+}
+
+/* ── Section wrapper ── */
+section {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px 20px;
+}
+
+/* ── Section headers ── */
+.section-title {
+  text-align: center;
+  font-size: 20px;
+  color: var(--parchment);
+  text-shadow: 3px 3px 0 var(--wood-dark);
+  margin-bottom: 8px;
+}
+.section-sub {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 40px;
+  background: var(--parchment);
+  color: var(--ink-soft);
+  border: 3px solid var(--gold-dark);
+  padding: 4px 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* ── Pixel panel ── */
+.pixel-panel {
+  background: var(--parchment);
+  border: 4px solid var(--wood-dark);
+  box-shadow: 0 0 0 3px var(--gold) inset, 6px 6px 0 rgba(0,0,0,0.18);
+  padding: 28px;
+}
+
+/* ── Wood button ── */
+.pixel-btn {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--parchment);
+  background: var(--wood);
+  border: none;
+  padding: 12px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 4px solid var(--wood-dark);
+  transition: transform 0.08s;
+  margin: 6px;
+}
+.pixel-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+.pixel-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+.pixel-btn.gold { background: var(--gold-dark); border-bottom-color: #8a6000; }
+.pixel-btn.gold:hover { background: var(--gold); }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================== HERO ======================== */
+#home {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-scene {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  min-height: 300px;
+}
+
+/* ── Pixel trees ── */
+.pixel-tree {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  image-rendering: pixelated;
+}
+.pixel-tree .trunk {
+  width: 14px; height: 22px;
+  background: #7d4f27;
+  border-top: 2px solid #5c3620;
+}
+.pixel-tree .canopy { display: flex; flex-direction: column; align-items: center; }
+.pixel-tree .c3 { width: 48px; height: 16px; background: #4a8e2c; }
+.pixel-tree .c2 { width: 36px; height: 14px; background: #5aaa38; margin-top: -4px; }
+.pixel-tree .c1 { width: 22px; height: 12px; background: #6ab04c; margin-top: -4px; }
+
+/* ── Junimo animations ── */
+@keyframes junimoHop {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-22px) rotate(-6deg); }
+  75%      { transform: translateY(-18px) rotate(5deg); }
+}
+@keyframes junimoWobble {
+  0%,100% { transform: scaleX(1); }
+  50%      { transform: scaleX(0.92); }
+}
+
+.junimo-wrap {
+  position: absolute;
+  bottom: 60px;
+  animation: junimoHop var(--hop-dur, 0.9s) ease-in-out infinite;
+  animation-delay: var(--hop-delay, 0s);
+}
+.junimo-wrap svg {
+  display: block;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 0 rgba(0,0,0,0.18));
+}
+
+/* ── Portrait card ── */
+.portrait-card {
+  width: 240px;
+  margin: 0 auto 24px;
+  border: 5px solid var(--gold-dark);
+  box-shadow: 0 0 0 3px var(--gold) inset, 8px 8px 0 rgba(0,0,0,0.2);
+  background: var(--parchment);
+  padding: 6px;
+  image-rendering: auto;
+}
+.portrait-card img {
+  width: 100%;
+  display: block;
+}
+
+/* ── Dialogue box ── */
+.dialogue-box {
+  background: var(--parchment);
+  border: 4px solid var(--wood-dark);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+  padding: 18px 22px;
+  text-align: left;
+  font-size: 22px;
+  min-height: 80px;
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 10px;
+}
+.dialogue-box::after {
+  content: "";
+  position: absolute;
+  top: -16px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 16px solid var(--wood-dark);
+}
+.cursor-blink {
+  display: inline-block;
+  width: 10px; height: 18px;
+  background: var(--ink);
+  animation: blink 1s steps(1) infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ── Hero grass strip ── */
+.hero-grass {
+  position: relative;
+  height: 80px;
+  width: 100%;
+  background: repeating-linear-gradient(90deg,
+    var(--grass-bright) 0 8px,
+    var(--grass) 8px 16px);
+  border-top: 4px solid var(--grass-dark);
+  overflow: hidden;
+}
+
+/* ── Hero flowers ── */
+.flower {
+  position: absolute;
+  bottom: 10px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+}
+
+/* ======================== ABOUT ======================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+
+.char-card {
+  background: var(--parchment);
+  border: 4px solid var(--gold-dark);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+  padding: 18px;
+  text-align: center;
+}
+.char-card .char-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  margin: 10px 0 4px;
+}
+.char-card .char-title {
+  font-size: 18px;
+  color: var(--ink-soft);
+}
+.char-stats { margin-top: 12px; }
+.char-stats .stat-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--parchment-dark);
+  padding: 3px 0;
+  font-size: 18px;
+}
+
+.journal-panel {
+  background: var(--parchment);
+  border: 4px solid var(--wood-dark);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+  padding: 24px;
+}
+.journal-panel h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: var(--gold-dark);
+  margin: 0 0 14px;
+}
+.journal-panel p {
+  line-height: 1.5;
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+/* ── Education timeline ── */
+.edu-timeline { margin-top: 28px; }
+.edu-entry {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 2px dashed var(--parchment-dark);
+}
+.edu-star {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+.edu-year {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--gold-dark);
+}
+.edu-place { font-size: 20px; color: var(--ink-soft); }
+
+/* ======================== SKILLS ======================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.skill-card {
+  background: var(--parchment);
+  border: 4px solid var(--wood-dark);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  padding: 16px;
+}
+.skill-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.skill-bar-bg {
+  height: 14px;
+  background: var(--parchment-dark);
+  border: 2px solid var(--wood-dark);
+  position: relative;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  position: absolute;
+  left: 0; top: 0;
+  transition: width 1s ease;
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: rgba(255,255,255,0.5);
+}
+.skill-level {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* ======================== QUESTS ======================== */
+.quest-card {
+  background: var(--parchment);
+  border: 4px solid var(--wood-dark);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  margin-bottom: 18px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.quest-card:hover { transform: translateY(-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.2); }
+.quest-top {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+}
+.quest-icon { font-size: 32px; flex-shrink: 0; }
+.quest-tag {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--gold-dark);
+  display: block;
+  margin-bottom: 6px;
+}
+.quest-card h4 {
+  margin: 0 0 6px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.quest-card .authors { font-size: 18px; color: var(--ink-soft); margin: 0 0 4px; }
+.quest-card .venue   { font-size: 18px; color: var(--accent-blue); margin: 0; }
+.quest-detail {
+  display: none;
+  padding: 0 18px 18px;
+  font-size: 20px;
+  color: var(--ink-soft);
+  border-top: 2px dashed var(--parchment-dark);
+}
+.quest-card.open .quest-detail { display: block; }
+.toggle-hint {
+  text-align: center;
+  font-size: 16px;
+  color: var(--ink-soft);
+  padding: 4px;
+  background: var(--parchment-dark);
+}
+
+/* ======================== TREASURE ======================== */
+.treasure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+.treasure-tile {
+  background: var(--parchment);
+  border: 4px solid var(--gold-dark);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  padding: 18px;
+  text-align: center;
+  position: relative;
+}
+.treasure-tile .year-badge {
+  position: absolute;
+  top: -2px; right: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  background: var(--gold-dark);
+  color: var(--parchment);
+  padding: 3px 7px;
+}
+.treasure-tile .trophy { font-size: 36px; display: block; margin: 8px 0; }
+.treasure-tile .amount {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+.treasure-tile h4 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--ink);
+  margin: 0 0 6px;
+  line-height: 1.8;
+}
+.treasure-tile .org  { font-size: 18px; color: var(--ink-soft); }
+.treasure-tile .desc { font-size: 18px; color: var(--ink-soft); margin-top: 6px; }
+
+/* ======================== VALLEY FOLKS ======================== */
+.folks-group { margin-bottom: 50px; }
+.folks-group-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--parchment);
+  text-shadow: 2px 2px 0 var(--wood-dark);
+  margin-bottom: 20px;
+}
+.npc-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.npc-card {
+  background: var(--parchment);
+  border: 4px solid var(--gold-dark);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  padding: 16px 12px;
+  text-align: center;
+  width: 148px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: default;
+}
+.npc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 0 rgba(0,0,0,0.22);
+}
+.npc-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--ink);
+  margin: 10px 0 4px;
+  line-height: 1.7;
+}
+.npc-role { font-size: 16px; color: var(--ink-soft); line-height: 1.3; }
+.npc-hearts { margin-top: 8px; font-size: 18px; letter-spacing: 1px; }
+
+/* ======================== ADVENTURE LOG ======================== */
+.adv-list { display: flex; flex-direction: column; gap: 20px; }
+.adv-card {
+  background: var(--parchment);
+  border: 4px solid var(--wood-dark);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  padding: 20px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.adv-icon { font-size: 36px; flex-shrink: 0; }
+.adv-card h4 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  margin: 0 0 6px;
+  line-height: 1.7;
+}
+.adv-card .meta { font-size: 18px; color: var(--ink-soft); margin-bottom: 8px; }
+.adv-card ul { margin: 0 0 10px; padding-left: 20px; font-size: 20px; }
+.adv-card li { margin-bottom: 4px; }
+.status-badge {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 4px 10px;
+  background: var(--accent-blue);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+}
+.status-badge.done { background: var(--accent-green); }
+.status-badge.guild { background: var(--accent-purple); }
+
+/* ======================== CONTACT ======================== */
+.mailbox-wrap {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.mailbox-icon {
+  font-size: 72px;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.2s;
+  animation: floatMail 2.5s ease-in-out infinite;
+}
+.mailbox-icon:hover { transform: scale(1.15); }
+@keyframes floatMail {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.email-reveal {
+  display: none;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 12px 18px;
+  border: 4px solid var(--gold-dark);
+  margin-top: 14px;
+}
+
+/* ======================== TREE DIVIDER ======================== */
+.tree-divider {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  height: 90px;
+  overflow: hidden;
+  background: repeating-linear-gradient(90deg, var(--grass-bright) 0 8px, var(--grass) 8px 16px);
+  border-top: 4px solid var(--grass-dark);
+  border-bottom: 4px solid var(--grass-dark);
+  padding-bottom: 4px;
+}
+.tree-divider .pixel-tree { position: static; }
+
+/* ── Small divider tree (shorter) ── */
+.pixel-tree.sm .trunk  { width:10px; height:14px; }
+.pixel-tree.sm .c3     { width:34px; height:12px; }
+.pixel-tree.sm .c2     { width:24px; height:10px; }
+.pixel-tree.sm .c1     { width:14px; height:8px; }
+
+/* ======================== MUSIC PLAYER ======================== */
+.music-player {
+  position: fixed;
+  bottom: 18px; right: 18px;
+  z-index: 200;
+  background: var(--parchment);
+  border: 4px solid var(--gold-dark);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--ink);
+}
+.music-player button {
+  background: var(--gold-dark);
+  border: none;
+  color: var(--parchment);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-bottom: 3px solid #8a6000;
+}
+.music-player button:hover { background: var(--gold); color: var(--ink); }
+.music-player input[type=range] { width: 60px; accent-color: var(--gold-dark); }
+.note-float {
+  font-size: 18px;
+  animation: noteFloat 1.8s ease-in-out infinite;
+}
+@keyframes noteFloat {
+  0%,100% { transform: translateY(0) rotate(-5deg); opacity:1; }
+  50%      { transform: translateY(-8px) rotate(5deg); opacity:0.6; }
+}
+
+/* ======================== FOOTER ======================== */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 24px;
+  background: var(--wood-dark);
+  color: var(--parchment);
+  font-size: 18px;
+  border-top: 4px solid #4a2e0f;
+}
+</style>
+</head>
+<body>
+
+<!-- Fixed sky + cloud layer -->
+<div class="sky-layer" aria-hidden="true">
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+  <div class="cloud cloud4"></div>
+</div>
+
+<!-- ── Navigation ── -->
+<nav class="signpost" aria-label="Main navigation">
+  <span class="brand">✦ PHONETICS VALLEY</span>
+  <a href="#home">The Farm</a>
+  <a href="#about">Journal</a>
+  <a href="#skills">Tools</a>
+  <a href="#quests">Quest Log</a>
+  <a href="#treasure">Treasure</a>
+  <a href="#folks">Valley Folks</a>
+  <a href="#adventure">Adventure</a>
+  <a href="#contact">Send a Dove</a>
+</nav>
+
+<!-- ── HERO ── -->
+<!-- PLACEHOLDER_HERO -->
+
+<!-- TREE DIVIDER 1 -->
+<!-- PLACEHOLDER_DIVIDER_1 -->
+
+<!-- ── ABOUT ── -->
+<!-- PLACEHOLDER_ABOUT -->
+
+<!-- TREE DIVIDER 2 -->
+<!-- PLACEHOLDER_DIVIDER_2 -->
+
+<!-- ── SKILLS ── -->
+<!-- PLACEHOLDER_SKILLS -->
+
+<!-- TREE DIVIDER 3 -->
+<!-- PLACEHOLDER_DIVIDER_3 -->
+
+<!-- ── QUEST LOG ── -->
+<!-- PLACEHOLDER_QUESTS -->
+
+<!-- TREE DIVIDER 4 -->
+<!-- PLACEHOLDER_DIVIDER_4 -->
+
+<!-- ── TREASURE CHEST ── -->
+<!-- PLACEHOLDER_TREASURE -->
+
+<!-- TREE DIVIDER 5 -->
+<!-- PLACEHOLDER_DIVIDER_5 -->
+
+<!-- ── VALLEY FOLKS ── -->
+<!-- PLACEHOLDER_FOLKS -->
+
+<!-- TREE DIVIDER 6 -->
+<!-- PLACEHOLDER_DIVIDER_6 -->
+
+<!-- ── ADVENTURE LOG ── -->
+<!-- PLACEHOLDER_ADVENTURE -->
+
+<!-- TREE DIVIDER 7 -->
+<!-- PLACEHOLDER_DIVIDER_7 -->
+
+<!-- ── CONTACT ── -->
+<!-- PLACEHOLDER_CONTACT -->
+
+<!-- ── FOOTER ── -->
+<!-- PLACEHOLDER_FOOTER -->
+
+<!-- ── MUSIC PLAYER ── -->
+<!-- PLACEHOLDER_MUSIC -->
+
+<!-- ── JAVASCRIPT ── -->
+<!-- PLACEHOLDER_JS -->
+
+</body>
+</html>
