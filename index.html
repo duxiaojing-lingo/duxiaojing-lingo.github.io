@@ -210,6 +210,50 @@ section {
   position: relative;
   z-index: 1;
 }
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    #16213e 0%,
+    #24426b 18%,
+    #3f7cad 34%,
+    #7fd4f5 46%,
+    var(--grass) 56%,
+    var(--grass) 100%);
+}
+
+/* ── Twinkling stars (hero only) ── */
+.stars {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 45%;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 2.6s ease-in-out infinite;
+}
+.star.big { width: 3px; height: 3px; }
+@keyframes twinkle {
+  0%,100% { opacity: 0.25; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.6); }
+}
+
+/* ── Local hero clouds (over the night sky) ── */
+.home-cloud {
+  z-index: 1;
+}
 
 .hero-scene {
   position: relative;
@@ -344,28 +388,41 @@ section {
 }
 
 /* ── Hero title (logo-style) ── */
-.hero-title-block { margin-bottom: 10px; }
+.hero-title-block { margin-bottom: 10px; position: relative; z-index: 2; }
 .hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 52px;
-  color: var(--gold);
-  text-shadow:
-    3px 3px 0 var(--outline),
-    -2px -2px 0 var(--outline),
-    2px -2px 0 var(--outline),
-    -2px 2px 0 var(--outline);
   letter-spacing: 1px;
   line-height: 1.1;
+  background: linear-gradient(180deg, #f0b872 0%, #d99456 45%, #a8631f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow:
+    3px 3px 0 #5c3620,
+    -2px -2px 0 #5c3620,
+    2px -2px 0 #5c3620,
+    -2px 2px 0 #5c3620,
+    0 4px 6px rgba(0,0,0,0.35);
 }
+.title-leaf {
+  position: absolute;
+  font-size: 22px;
+  filter: drop-shadow(1px 2px 1px rgba(0,0,0,0.3));
+}
+.leaf-tl { top: -8px; left: 6%; transform: rotate(-25deg); }
+.leaf-br { bottom: -4px; right: 6%; transform: rotate(155deg); }
 .hero-subtitle {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: 700;
   font-size: 16px;
-  color: var(--ink-soft);
+  color: #f0e6d2;
   margin-top: 6px;
   letter-spacing: 3px;
   text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 /* ── Mountains ── */
@@ -374,15 +431,26 @@ section {
   bottom: 76px;
   left: 0;
   width: 100%;
-  height: 130px;
+  height: 170px;
   overflow: hidden;
   pointer-events: none;
 }
-.mountain {
+.mountain-range {
   position: absolute;
   bottom: 0;
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  opacity: 0.55;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.mountain-range.far {
+  background: #6b7fb0;
+  opacity: 0.5;
+  clip-path: polygon(0% 100%, 0% 62%, 9% 45%, 20% 60%, 33% 32%, 46% 55%, 58% 28%, 71% 52%, 83% 38%, 92% 58%, 100% 42%, 100% 100%);
+}
+.mountain-range.near {
+  background: linear-gradient(180deg, #6fc24a 0%, #3f8f34 60%, #2e6b28 100%);
+  opacity: 0.95;
+  clip-path: polygon(0% 100%, 0% 78%, 8% 48%, 18% 68%, 30% 22%, 42% 60%, 55% 15%, 68% 58%, 80% 26%, 92% 62%, 100% 44%, 100% 100%);
 }
 
 /* ── Flying Junimo ── */
@@ -881,9 +949,31 @@ footer {
 
 <!-- ── HERO ── -->
 <section id="home">
+  <div class="stars" aria-hidden="true">
+    <div class="star" style="top:8%;left:6%;animation-delay:0s"></div>
+    <div class="star big" style="top:14%;left:16%;animation-delay:0.4s"></div>
+    <div class="star" style="top:5%;left:28%;animation-delay:0.9s"></div>
+    <div class="star" style="top:20%;left:38%;animation-delay:1.3s"></div>
+    <div class="star big" style="top:10%;left:48%;animation-delay:0.2s"></div>
+    <div class="star" style="top:24%;left:58%;animation-delay:1.7s"></div>
+    <div class="star" style="top:6%;left:66%;animation-delay:0.6s"></div>
+    <div class="star big" style="top:16%;left:76%;animation-delay:1.1s"></div>
+    <div class="star" style="top:9%;left:86%;animation-delay:0.3s"></div>
+    <div class="star" style="top:22%;left:93%;animation-delay:1.5s"></div>
+    <div class="star" style="top:30%;left:10%;animation-delay:2.0s"></div>
+    <div class="star" style="top:32%;left:44%;animation-delay:0.8s"></div>
+    <div class="star big" style="top:28%;left:82%;animation-delay:1.9s"></div>
+    <div class="star" style="top:3%;left:52%;animation-delay:1.0s"></div>
+    <div class="star" style="top:18%;left:4%;animation-delay:0.5s"></div>
+    <div class="star" style="top:12%;left:96%;animation-delay:1.4s"></div>
+  </div>
+  <div class="cloud home-cloud" style="width:40px;height:14px;top:14%;left:-10%;animation:driftCloud 55s linear infinite" aria-hidden="true"></div>
+  <div class="cloud home-cloud" style="width:30px;height:11px;top:26%;left:-30%;animation:driftCloud 75s linear infinite;animation-delay:-30s" aria-hidden="true"></div>
   <div class="hero-title-block">
+    <span class="title-leaf leaf-tl" aria-hidden="true">🌿</span>
     <div class="hero-title">Phonetics Valley</div>
     <div class="hero-subtitle">Xiaojing Du</div>
+    <span class="title-leaf leaf-br" aria-hidden="true">🌿</span>
   </div>
     <img class="flying-junimo" src="data:image/gif;base64,R0lGODlhMAAwAPIFAEfLGwQ9D43wMzKGHKW1gwAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJDwAFACwAAAAAMAAwAAAD/1i63P4wykmrvThHwHX4msMBHhgyYxmcz+e+bhSzCmyv0EzfsGwyugXvNRIYj8HaT7hUDgPFozFZoFqfUI502qx2da6o1DYoi8HfX1i7JZvZAjQOqP6IkbDy4FyfM+cuRyN6hIViejYOcoIchY57cIg9DYtGg4+Eh2WJlHlljCMAW6MClwNUfy56oHekpY2bXakfq5ahoq6gkn45tG+3wMHBqJ0BesLIycR0xr/JzyPLf9DUt9JO1dkA115Z2tDca6HiyOQc4XbW6crr0bLFwObD7efvzMCswvnb9tO3+/hsjeuH7Z9AZPvQNYMU7NgtAhAj7qKgytkth6EiSozFq0eFL4bAMI7QCHGiBRckCWQziQElyZUcVaSEeYqgBHmmhtAo2JAjpx30Qu36ubObzmLcKGJRNAnoE6YvWBAterIp1apRry5IAAAh+QQJDwAFACwDAAMAKgAtAAAD/1i63A7QyUkpBDXrF7cMoFeAgUY6p5dW69Jm7xcqsUveOE7le+7fPeDkRywNdQ2SYMm8KJnLGC8Jgi6dVasUyXhCsQGrYCscZQWXgTqnHlyYq6k5fIW02ep3dDaPn9NrOG16Y3xEbU12bYuLhHdFAYh1AIyVbhBMj0WSaIqWg5hLmn6ReaFiqImUgUZdIKAAqbKdqwNksLOpgLZ8NgEXwMHCw8FkxMfIYCggyc3Dxs7RENDSztTVydfTzNncwNoAJM3ixb003mDj6NutvsKqx/Dsy7/B8sP34Pfvk8pUpQMICBwoDNbAgZrotTkosKApAAwJJPy3kKHDSxAZTpQBEClbrRoUH0rbGATWSFYiIKlsp2JlERG+XPpIyYVmmSAgWdQ8crNlzwIJAAAh+QQJDwAFACwDAAMAKgAtAAAD/1garP7wgRkrZMHqMsG22Fd1ohOCWJqWV4OqKvucFQzLpjszQu93tlhrNfT9JkHiTpkLGHvApK5JwxwBgyzsKYhmFsKCFTrJDrZPL1U37pa1Kq4abDNfzfh8x1cN2slYeYJ7PX11WXeCehN8bI4BZoRcRh2SZjd0kYyTlJUAPpdhGJqfnFeWcEoYnqytroFnU3SvtK6hX0u1upW3Eau7wEiyYgzBwTRNxsDIs56/tM9zuc7FtdHCuMnUAbrXAMzE3J6nruTfw97mrObg6YCv7OgMZgT19qyk+Km+81n2957yBdw3hN4/AvoGvOr1QiCtgwTA8YOUJRhEiQUrArs4TCtDEofSZHzU2ArjhpEKXZmc2E5KNhaYliTBQaelFJo4ZXbMeTIMzxIxIyQAACH5BAUPAAUALAMAAwAqAC0AAAP/WLrcDtDJSSkENesXtwygV4CBRjqnl1br0mbvFyqxS944TuV77t894ORHLA11DZJgybwomcsYLwmCLp1VqxTJeEKxAatgKxxlBZeBOqceXJirqTl8hbTZ6nd0No+f02s4bXpjfERtTXZti4uEd0UBiHUAjJVuEEyPRZJoipaDmEuafpF5oWKoiZSBRl0goACpsp2rA2Sws6mAtnw2ARfAwcLDwWTEx8hgKCDJzcPGztEQ0NLO1NXJ19PM2dzA2gAkzeLFvTTeYOPo262+wqrH8OzLv8Hyw/fg9++TylSlAwgIHCgM1sCBmui1OSiwoCkADAkk/LeQocNLEBlOlAEQKVutGhQfStsYBNZIViIgqWynYmUREb5c+kjJhWaZICBZ1Dxys2XPAgkAADs=" alt="" aria-hidden="true">
     <img class="stardrop" src="data:image/png;base64,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" alt="" aria-hidden="true">
@@ -892,10 +982,8 @@ footer {
 
     <!-- Mountains -->
     <div class="mountains" aria-hidden="true">
-      <div class="mountain" style="left:-6%;width:220px;height:110px;background:#8fb5ad"></div>
-      <div class="mountain" style="left:14%;width:170px;height:80px;background:#a7c9c2"></div>
-      <div class="mountain" style="right:22%;width:190px;height:95px;background:#a7c9c2"></div>
-      <div class="mountain" style="right:0%;width:230px;height:120px;background:#8fb5ad"></div>
+      <div class="mountain-range far"></div>
+      <div class="mountain-range near"></div>
     </div>
 
     <!-- Accent bursts (sparse) -->
@@ -934,200 +1022,6 @@ footer {
     <div class="pixel-tree" style="right:14%;bottom:80px;position:absolute">
       <div class="canopy"><div class="c1"></div><div class="c2"></div><div class="c3"></div></div>
       <div class="trunk"></div>
-    </div>
-
-    <!-- Junimos — blocky pixel-art bodies with decorative toppers -->
-    <div class="junimo-wrap" style="left:5%; --hop-dur:0.9s; --hop-delay:0s">
-      <svg viewBox="0 0 16 22" width="64" height="88" style="image-rendering:pixelated">
-        <rect x="7" y="0" width="2" height="1" fill="#ffd23f"/>
-        <rect x="6" y="1" width="4" height="1" fill="#ffd23f"/>
-        <rect x="5" y="2" width="6" height="1" fill="#ffd23f"/>
-        <rect x="6" y="3" width="1" height="1" fill="#e8a400"/>
-        <rect x="9" y="3" width="1" height="1" fill="#e8a400"/>
-        <rect x="5" y="5" width="6" height="1" fill="#5de65d"/>
-        <rect x="3" y="6" width="10" height="9" fill="#5de65d"/>
-        <rect x="2" y="7" width="12" height="7" fill="#5de65d"/>
-        <rect x="4" y="14" width="8" height="2" fill="#5de65d"/>
-        <rect x="3" y="6" width="4" height="3" fill="#d4ffd4" opacity="0.25"/>
-        <rect x="11" y="7" width="3" height="6" fill="#3db33d" opacity="0.18"/>
-        <rect x="4" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="10" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="4" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="10" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="2" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="12" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="6" y="12" width="4" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="5" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="10" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="0" y="9" width="3" height="4" fill="#5de65d"/>
-        <rect x="13" y="9" width="3" height="4" fill="#5de65d"/>
-        <rect x="0" y="12" width="3" height="1" fill="#3db33d" opacity="0.3"/>
-        <rect x="13" y="12" width="3" height="1" fill="#3db33d" opacity="0.3"/>
-        <rect x="3" y="16" width="4" height="5" fill="#5de65d"/>
-        <rect x="9" y="16" width="4" height="5" fill="#5de65d"/>
-        <rect x="3" y="19" width="4" height="2" fill="#3db33d" opacity="0.4"/>
-        <rect x="9" y="19" width="4" height="2" fill="#3db33d" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <div class="junimo-wrap" style="left:18%; --hop-dur:1.1s; --hop-delay:0.2s">
-      <svg viewBox="0 0 16 22" width="56" height="77" style="image-rendering:pixelated">
-        <rect x="6" y="0" width="1" height="2" fill="#e8552e"/>
-        <rect x="9" y="0" width="1" height="2" fill="#e8552e"/>
-        <rect x="5" y="1" width="6" height="2" fill="#ff6b3d"/>
-        <rect x="6" y="3" width="4" height="1" fill="#2e9e2e"/>
-        <rect x="5" y="5" width="6" height="1" fill="#ffd23f"/>
-        <rect x="3" y="6" width="10" height="9" fill="#ffd23f"/>
-        <rect x="2" y="7" width="12" height="7" fill="#ffd23f"/>
-        <rect x="4" y="14" width="8" height="2" fill="#ffd23f"/>
-        <rect x="3" y="6" width="4" height="3" fill="#fff3c4" opacity="0.25"/>
-        <rect x="11" y="7" width="3" height="6" fill="#c8920a" opacity="0.18"/>
-        <rect x="4" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="10" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="4" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="10" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="2" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="12" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="6" y="12" width="4" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="5" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="10" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="0" y="9" width="3" height="4" fill="#ffd23f"/>
-        <rect x="13" y="9" width="3" height="4" fill="#ffd23f"/>
-        <rect x="0" y="12" width="3" height="1" fill="#c8920a" opacity="0.3"/>
-        <rect x="13" y="12" width="3" height="1" fill="#c8920a" opacity="0.3"/>
-        <rect x="3" y="16" width="4" height="5" fill="#ffd23f"/>
-        <rect x="9" y="16" width="4" height="5" fill="#ffd23f"/>
-        <rect x="3" y="19" width="4" height="2" fill="#c8920a" opacity="0.4"/>
-        <rect x="9" y="19" width="4" height="2" fill="#c8920a" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <div class="junimo-wrap" style="left:32%; --hop-dur:0.8s; --hop-delay:0.4s">
-      <svg viewBox="0 0 16 22" width="60" height="82" style="image-rendering:pixelated">
-        <rect x="7" y="0" width="2" height="2" fill="#1fae7a"/>
-        <rect x="5" y="1" width="3" height="2" fill="#2fd1a0"/>
-        <rect x="8" y="1" width="3" height="2" fill="#2fd1a0"/>
-        <rect x="7" y="3" width="2" height="1" fill="#1a7a52"/>
-        <rect x="5" y="5" width="6" height="1" fill="#ff6b6b"/>
-        <rect x="3" y="6" width="10" height="9" fill="#ff6b6b"/>
-        <rect x="2" y="7" width="12" height="7" fill="#ff6b6b"/>
-        <rect x="4" y="14" width="8" height="2" fill="#ff6b6b"/>
-        <rect x="3" y="6" width="4" height="3" fill="#ffd4d4" opacity="0.25"/>
-        <rect x="11" y="7" width="3" height="6" fill="#aa2020" opacity="0.18"/>
-        <rect x="4" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="10" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="4" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="10" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="2" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="12" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="6" y="12" width="4" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="5" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="10" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="0" y="9" width="3" height="4" fill="#ff6b6b"/>
-        <rect x="13" y="9" width="3" height="4" fill="#ff6b6b"/>
-        <rect x="0" y="12" width="3" height="1" fill="#aa2020" opacity="0.3"/>
-        <rect x="13" y="12" width="3" height="1" fill="#aa2020" opacity="0.3"/>
-        <rect x="3" y="16" width="4" height="5" fill="#ff6b6b"/>
-        <rect x="9" y="16" width="4" height="5" fill="#ff6b6b"/>
-        <rect x="3" y="19" width="4" height="2" fill="#aa2020" opacity="0.4"/>
-        <rect x="9" y="19" width="4" height="2" fill="#aa2020" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <div class="junimo-wrap" style="right:30%; --hop-dur:1.0s; --hop-delay:0.1s">
-      <svg viewBox="0 0 16 22" width="58" height="80" style="image-rendering:pixelated">
-        <rect x="7" y="0" width="2" height="1" fill="#d68bff"/>
-        <rect x="5" y="1" width="2" height="1" fill="#a855f7"/>
-        <rect x="9" y="1" width="2" height="1" fill="#a855f7"/>
-        <rect x="6" y="2" width="4" height="1" fill="#d68bff"/>
-        <rect x="7" y="3" width="2" height="1" fill="#7c3aed"/>
-        <rect x="5" y="5" width="6" height="1" fill="#c084fc"/>
-        <rect x="3" y="6" width="10" height="9" fill="#c084fc"/>
-        <rect x="2" y="7" width="12" height="7" fill="#c084fc"/>
-        <rect x="4" y="14" width="8" height="2" fill="#c084fc"/>
-        <rect x="3" y="6" width="4" height="3" fill="#f3e8ff" opacity="0.25"/>
-        <rect x="11" y="7" width="3" height="6" fill="#8040c0" opacity="0.18"/>
-        <rect x="4" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="10" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="4" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="10" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="2" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="12" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="6" y="12" width="4" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="5" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="10" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="0" y="9" width="3" height="4" fill="#c084fc"/>
-        <rect x="13" y="9" width="3" height="4" fill="#c084fc"/>
-        <rect x="0" y="12" width="3" height="1" fill="#8040c0" opacity="0.3"/>
-        <rect x="13" y="12" width="3" height="1" fill="#8040c0" opacity="0.3"/>
-        <rect x="3" y="16" width="4" height="5" fill="#c084fc"/>
-        <rect x="9" y="16" width="4" height="5" fill="#c084fc"/>
-        <rect x="3" y="19" width="4" height="2" fill="#8040c0" opacity="0.4"/>
-        <rect x="9" y="19" width="4" height="2" fill="#8040c0" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <div class="junimo-wrap" style="right:16%; --hop-dur:0.85s; --hop-delay:0.3s">
-      <svg viewBox="0 0 16 22" width="62" height="85" style="image-rendering:pixelated">
-        <rect x="6" y="0" width="4" height="1" fill="#ff5c8d"/>
-        <rect x="5" y="1" width="6" height="1" fill="#ffd23f"/>
-        <rect x="5" y="2" width="6" height="1" fill="#2fd1ff"/>
-        <rect x="6" y="3" width="4" height="1" fill="#3f6fe0"/>
-        <rect x="5" y="5" width="6" height="1" fill="#60a5fa"/>
-        <rect x="3" y="6" width="10" height="9" fill="#60a5fa"/>
-        <rect x="2" y="7" width="12" height="7" fill="#60a5fa"/>
-        <rect x="4" y="14" width="8" height="2" fill="#60a5fa"/>
-        <rect x="3" y="6" width="4" height="3" fill="#dbeafe" opacity="0.25"/>
-        <rect x="11" y="7" width="3" height="6" fill="#1a60d0" opacity="0.18"/>
-        <rect x="4" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="10" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="4" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="10" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="2" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="12" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="6" y="12" width="4" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="5" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="10" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="0" y="9" width="3" height="4" fill="#60a5fa"/>
-        <rect x="13" y="9" width="3" height="4" fill="#60a5fa"/>
-        <rect x="0" y="12" width="3" height="1" fill="#1a60d0" opacity="0.3"/>
-        <rect x="13" y="12" width="3" height="1" fill="#1a60d0" opacity="0.3"/>
-        <rect x="3" y="16" width="4" height="5" fill="#60a5fa"/>
-        <rect x="9" y="16" width="4" height="5" fill="#60a5fa"/>
-        <rect x="3" y="19" width="4" height="2" fill="#1a60d0" opacity="0.4"/>
-        <rect x="9" y="19" width="4" height="2" fill="#1a60d0" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <div class="junimo-wrap" style="right:4%; --hop-dur:0.95s; --hop-delay:0.5s">
-      <svg viewBox="0 0 16 22" width="58" height="80" style="image-rendering:pixelated">
-        <rect x="7" y="0" width="1" height="1" fill="#2e9e2e"/>
-        <rect x="6" y="1" width="5" height="3" fill="#ffd23f"/>
-        <rect x="6" y="1" width="2" height="1" fill="#fff3c4" opacity="0.6"/>
-        <rect x="5" y="5" width="6" height="1" fill="#fb923c"/>
-        <rect x="3" y="6" width="10" height="9" fill="#fb923c"/>
-        <rect x="2" y="7" width="12" height="7" fill="#fb923c"/>
-        <rect x="4" y="14" width="8" height="2" fill="#fb923c"/>
-        <rect x="3" y="6" width="4" height="3" fill="#ffe4c4" opacity="0.25"/>
-        <rect x="11" y="7" width="3" height="6" fill="#c05a0a" opacity="0.18"/>
-        <rect x="4" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="10" y="9" width="2" height="2" fill="#1a0808"/>
-        <rect x="4" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="10" y="9" width="1" height="1" fill="white" opacity="0.9"/>
-        <rect x="2" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="12" y="11" width="2" height="1" fill="#ff9ab3" opacity="0.75"/>
-        <rect x="6" y="12" width="4" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="5" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="10" y="13" width="1" height="1" fill="#1a0808" opacity="0.4"/>
-        <rect x="0" y="9" width="3" height="4" fill="#fb923c"/>
-        <rect x="13" y="9" width="3" height="4" fill="#fb923c"/>
-        <rect x="0" y="12" width="3" height="1" fill="#c05a0a" opacity="0.3"/>
-        <rect x="13" y="12" width="3" height="1" fill="#c05a0a" opacity="0.3"/>
-        <rect x="3" y="16" width="4" height="5" fill="#fb923c"/>
-        <rect x="9" y="16" width="4" height="5" fill="#fb923c"/>
-        <rect x="3" y="19" width="4" height="2" fill="#c05a0a" opacity="0.4"/>
-        <rect x="9" y="19" width="4" height="2" fill="#c05a0a" opacity="0.4"/>
-      </svg>
     </div>
 
     <!-- Grass strip with flowers -->
@@ -1243,15 +1137,6 @@ footer {
       <p class="authors">Du, X., Nolan, F., &amp; Post, B.</p>
       <p class="venue">International Conference on Phonetic Variation 2026, University of Granada</p>
       <div class="quest-detail">Examines how glottalization operates at both the segment and the suprasegmental (tone) level in a Jin Chinese dialect, tracing the phonetic pathways linking tone and phonation.</div>
-      <div class="toggle-hint">▾ tap to expand</div>
-    </div>
-
-    <div class="quest-card reveal" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
-      <span class="quest-tag">Conference Paper · 2024</span>
-      <h4>Automatic Frame-Level Voice Quality Labelling Using Self-Supervised Speech Representations</h4>
-      <p class="authors">Du, X., Post, B., &amp; Nolan, F.</p>
-      <p class="venue">Interspeech 2024, Kos, Greece</p>
-      <div class="quest-detail">Introduced a frame-level VQ labelling pipeline using SSL models (wav2vec 2.0, HuBERT) fine-tuned on annotated corpora. Demonstrated that mid-network layers carry the richest phonation-type signal — a key finding for interpretable voice AI.</div>
       <div class="toggle-hint">▾ tap to expand</div>
     </div>
 
@@ -1393,19 +1278,6 @@ footer {
     </div>
 
     <div class="adv-card reveal">
-      <div class="adv-icon">🌽</div>
-      <div>
-        <h4>Tense Vowels in the Central Plains Dialect</h4>
-        <div class="meta">Wake Forest University · 2023 – Present</div>
-        <ul>
-          <li>Analysed speech data from 20 native speakers of Henan Mandarin using acoustic analysis, PCA, and Partitioned Local Depth.</li>
-          <li>Developed functional data analysis methods for tonal contours and short time-series variation.</li>
-        </ul>
-        <span class="status-badge">In Progress</span>
-      </div>
-    </div>
-
-    <div class="adv-card reveal">
       <div class="adv-icon">🔬</div>
       <div>
         <h4>Interpretable Voice Quality Labelling</h4>
@@ -1434,6 +1306,19 @@ footer {
 
   <div class="subsection-title">Previous Projects</div>
   <div class="adv-list">
+    <div class="adv-card reveal">
+      <div class="adv-icon">🌽</div>
+      <div>
+        <h4>Tense Vowels in the Central Plains Dialect</h4>
+        <div class="meta">Wake Forest University · 2023 – Present</div>
+        <ul>
+          <li>Analysed speech data from 20 native speakers of Henan Mandarin using acoustic analysis, PCA, and Partitioned Local Depth.</li>
+          <li>Developed functional data analysis methods for tonal contours and short time-series variation.</li>
+        </ul>
+        <span class="status-badge done">Completed</span>
+      </div>
+    </div>
+
     <div class="adv-card reveal">
       <div class="adv-icon">🗣️</div>
       <div>
