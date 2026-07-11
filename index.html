@@ -1281,10 +1281,199 @@ footer {
 </footer>
 
 <!-- ── MUSIC PLAYER ── -->
-<!-- PLACEHOLDER_MUSIC -->
+<div class="music-player" role="region" aria-label="Music player">
+  <span class="note-float" aria-hidden="true">♪</span>
+  <button id="playBtn" onclick="togglePlay()" title="Play/Pause music">▶</button>
+  <span style="font-size:9px;max-width:120px;overflow:hidden;white-space:nowrap">Summer · ConcernedApe</span>
+  <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.35" title="Volume" oninput="setVol(this.value)">
+  <audio id="bgMusic" loop>
+    <source src="audio/summer.mp3" type="audio/mpeg">
+  </audio>
+</div>
 
 <!-- ── JAVASCRIPT ── -->
-<!-- PLACEHOLDER_JS -->
+<script>
+/* ── Typewriter dialogue ── */
+const lines = [
+  "Oh! A visitor! Welcome to Phonetics Valley! ♪",
+  "I'm Xiaojing — I farm acoustic data and grow tones...",
+  "Make yourself at home. The valley has much to discover! ★"
+];
+let lineIdx = 0, charIdx = 0, typing = true;
+const dialogueEl = document.getElementById('dialogue-text');
+
+function typeNext() {
+  const line = lines[lineIdx];
+  if (typing) {
+    dialogueEl.textContent = line.slice(0, charIdx + 1);
+    charIdx++;
+    if (charIdx >= line.length) {
+      typing = false;
+      setTimeout(() => { typing = false; }, 1800);
+      setTimeout(advanceLine, 2800);
+    } else {
+      setTimeout(typeNext, 55);
+    }
+  }
+}
+function advanceLine() {
+  lineIdx = (lineIdx + 1) % lines.length;
+  charIdx = 0;
+  typing = true;
+  dialogueEl.textContent = '';
+  setTimeout(typeNext, 200);
+}
+setTimeout(typeNext, 600);
+
+/* ── Scroll reveal ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Email reveal ── */
+function revealEmail() {
+  const el = document.getElementById('emailReveal');
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+/* ── Music player ── */
+const audio = document.getElementById('bgMusic');
+const playBtn = document.getElementById('playBtn');
+audio.volume = 0.35;
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play().then(() => { playBtn.textContent = '⏸'; }).catch(() => {});
+  } else {
+    audio.pause();
+    playBtn.textContent = '▶';
+  }
+}
+function setVol(v) { audio.volume = parseFloat(v); }
+
+/* ── NPC sprite renderer ── */
+function npcSVG(hair, skin, outfit, pants, extra) {
+  return `<svg viewBox="0 0 16 32" width="96" height="192" style="image-rendering:pixelated;display:block;margin:0 auto">
+    <rect x="3"  y="0"  width="10" height="1"  fill="${hair}"/>
+    <rect x="2"  y="1"  width="12" height="3"  fill="${hair}"/>
+    <rect x="2"  y="4"  width="12" height="6"  fill="${skin}"/>
+    <rect x="4"  y="6"  width="2"  height="2"  fill="#1a0a00"/>
+    <rect x="10" y="6"  width="2"  height="2"  fill="#1a0a00"/>
+    <rect x="3"  y="8"  width="2"  height="1"  fill="#ffb3ba" opacity="0.6"/>
+    <rect x="11" y="8"  width="2"  height="1"  fill="#ffb3ba" opacity="0.6"/>
+    <rect x="6"  y="10" width="4"  height="2"  fill="${skin}"/>
+    <rect x="2"  y="12" width="12" height="9"  fill="${outfit}"/>
+    <rect x="0"  y="12" width="2"  height="8"  fill="${outfit}"/>
+    <rect x="14" y="12" width="2"  height="8"  fill="${outfit}"/>
+    <rect x="0"  y="20" width="2"  height="2"  fill="${skin}"/>
+    <rect x="14" y="20" width="2"  height="2"  fill="${skin}"/>
+    <rect x="2"  y="21" width="12" height="1"  fill="${pants}"/>
+    <rect x="3"  y="22" width="4"  height="7"  fill="${pants}"/>
+    <rect x="9"  y="22" width="4"  height="7"  fill="${pants}"/>
+    <rect x="7"  y="22" width="2"  height="7"  fill="#1a0a00" opacity="0.15"/>
+    <rect x="2"  y="29" width="5"  height="3"  fill="#3d2b1f"/>
+    <rect x="9"  y="29" width="5"  height="3"  fill="#3d2b1f"/>
+    ${extra || ''}
+  </svg>`;
+}
+
+const NPCS = [
+  {
+    group: 0, name: "Prof. Brechtje Post", role: "PhD Supervisor · Cambridge", hearts: 10,
+    hair:"#d4a017", skin:"#f5cba7", outfit:"#7b2d8b", pants:"#2c3e50",
+    extra:'<rect x="2" y="12" width="12" height="2" fill="#9b4dab"/>'
+  },
+  {
+    group: 0, name: "Prof. Francis Nolan", role: "PhD Supervisor · Cambridge", hearts: 10,
+    hair:"#9e9e9e", skin:"#f5cba7", outfit:"#1a3a5c", pants:"#1a2733",
+    extra:'<rect x="7" y="13" width="2" height="7" fill="#4a8abf" opacity="0.5"/>'
+  },
+  {
+    group: 1, name: "Prof. Kenneth Berenhaut", role: "Statistics Mentor · Wake Forest", hearts: 8,
+    hair:"#5d3a1a", skin:"#f5cba7", outfit:"#17867d", pants:"#1a3a2c", extra:''
+  },
+  {
+    group: 1, name: "Prof. Jeff Mielke", role: "Phonetics Mentor · Wake Forest", hearts: 8,
+    hair:"#3d2b1f", skin:"#d4a574", outfit:"#2d6a4f", pants:"#1a3020", extra:''
+  },
+  {
+    group: 1, name: "Dr. César Gutiérrez", role: "Research Mentor · Wake Forest", hearts: 7,
+    hair:"#1a1a1a", skin:"#c8a07a", outfit:"#f39c12", pants:"#1a2733",
+    extra:'<rect x="2" y="12" width="12" height="9" fill="#e67e22" opacity="0.25"/>'
+  },
+  {
+    group: 1, name: "Dr. Sneha Jadhav", role: "Research Mentor · Wake Forest", hearts: 7,
+    hair:"#1a1a1a", skin:"#b5845a", outfit:"#e91e8c", pants:"#2c3e50",
+    extra:'<rect x="14" y="4" width="2" height="3" fill="#e91e8c"/>'
+  },
+  {
+    group: 1, name: "Dr. Tiffany Judy", role: "Research Mentor · Wake Forest", hearts: 7,
+    hair:"#8b3a0f", skin:"#f5cba7", outfit:"#f9ca24", pants:"#2c3e50", extra:''
+  },
+  {
+    group: 2, name: "C. McGhee", role: "Voice Quality Project", hearts: 6,
+    hair:"#c0392b", skin:"#f5cba7", outfit:"#1565c0", pants:"#1a2733", extra:''
+  },
+  {
+    group: 2, name: "M. Qian", role: "Voice Quality Project", hearts: 6,
+    hair:"#1a1a1a", skin:"#d4a574", outfit:"#6a0dad", pants:"#2c3e50", extra:''
+  },
+  {
+    group: 2, name: "L. Shahidi", role: "Voice Quality Project", hearts: 6,
+    hair:"#3d2b1f", skin:"#c8a07a", outfit:"#ff6b6b", pants:"#2c3e50", extra:''
+  },
+  {
+    group: 2, name: "C. Xu", role: "Voice Quality Project", hearts: 6,
+    hair:"#1a1a1a", skin:"#d4a574", outfit:"#43a047", pants:"#1a3020", extra:''
+  },
+  {
+    group: 2, name: "Q. Duan & JWST Team", role: "Galaxy Mergers · Statistical Collab", hearts: 5,
+    hair:"#1a1a1a", skin:"#d4a574", outfit:"#0d1b2a", pants:"#0a0f1a",
+    extra:`<rect x="4" y="14" width="1" height="1" fill="white" opacity="0.8"/>
+           <rect x="9" y="16" width="1" height="1" fill="white" opacity="0.8"/>
+           <rect x="7" y="13" width="1" height="1" fill="white" opacity="0.8"/>
+           <rect x="11" y="18" width="1" height="1" fill="white" opacity="0.6"/>`
+  }
+];
+
+const groupMeta = [
+  { title: "🏫 The Elders", sub: "PhD supervisors" },
+  { title: "🌻 Mentors from the Old Valley", sub: "Wake Forest University" },
+  { title: "🤝 Fellow Farmers", sub: "collaborators & co-authors" }
+];
+
+function renderNPCs() {
+  const container = document.getElementById('npc-container');
+  const groups = [[], [], []];
+  NPCS.forEach(n => groups[n.group].push(n));
+
+  groups.forEach((members, gi) => {
+    const meta = groupMeta[gi];
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'folks-group reveal';
+    const hearts = n => '♥'.repeat(n.hearts) + '<span style="opacity:0.3">' + '♥'.repeat(10 - n.hearts) + '</span>';
+    groupDiv.innerHTML = `
+      <div class="folks-group-title">${meta.title}</div>
+      <div style="text-align:center;color:var(--parchment);font-size:18px;margin-bottom:16px">${meta.sub}</div>
+      <div class="npc-grid">
+        ${members.map(n => `
+          <div class="npc-card">
+            ${npcSVG(n.hair, n.skin, n.outfit, n.pants, n.extra)}
+            <div class="npc-name">${n.name}</div>
+            <div class="npc-role">${n.role}</div>
+            <div class="npc-hearts" style="color:var(--heart)">${hearts(n)}</div>
+          </div>
+        `).join('')}
+      </div>`;
+    container.appendChild(groupDiv);
+  });
+
+  // Re-observe newly added reveal elements
+  container.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+renderNPCs();
+</script>
 
 </body>
 </html>
