@@ -628,9 +628,12 @@ section {
 }
 .npc-role { font-size: 16px; color: var(--ink-soft); line-height: 1.3; }
 .npc-jump {
-  width: 48px;
-  height: 48px;
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
   image-rendering: pixelated;
+  object-fit: contain;
 }
 
 /* ======================== ADVENTURE LOG ======================== */
@@ -1334,6 +1337,7 @@ const NPCS = [
   {
     group:0, name:"Prof. Brechtje Post", role:"PhD Supervisor · Cambridge",
     quote:"Ask Brechtje for a quote about supervising the Jin Chinese phonation research!",
+    gif:"assets/collaborators/brechtje-post.gif",
     body:"#c084fc", dark:"#7c3aed", light:"#f3e8ff",
     accessory:`
       <rect x="3"  y="3"  width="10" height="3"  fill="#fbbf24"/>
@@ -1349,6 +1353,7 @@ const NPCS = [
   {
     group:0, name:"Prof. Francis Nolan", role:"PhD Supervisor · Cambridge",
     quote:"Ask Francis for a quote about supervising the Jin Chinese phonation research!",
+    gif:"assets/collaborators/francis-nolan.gif",
     body:"#94a3b8", dark:"#475569", light:"#f1f5f9",
     accessory:`
       <rect x="5"  y="3"  width="6"  height="3"  fill="#1e293b"/>
@@ -1359,34 +1364,24 @@ const NPCS = [
       <rect x="6"  y="5"  width="4"  height="1"  fill="#fbbf24"/>`
   },
   {
-    group:1, name:"Dr. Charles McGhee", role:"Voice Quality Project",
-    quote:"Ask Charles for a quote about our work together on the Voice Quality project!",
-    body:"#f87171", dark:"#dc2626", light:"#fee2e2",
+    group:1, name:"Dr. Chenzi Xu", role:"Voice Quality Project",
+    quote:"Ask Chenzi for a quote about our work together on the Voice Quality project!",
+    gif:"assets/collaborators/chenzi-xu.gif",
+    body:"#4ade80", dark:"#16a34a", light:"#dcfce7",
     accessory:`
-      <rect x="7"  y="0"  width="2"  height="5"  fill="#fca5a5"/>
-      <rect x="5"  y="1"  width="6"  height="3"  fill="#fca5a5"/>
-      <rect x="6"  y="0"  width="4"  height="1"  fill="#ef4444"/>
-      <rect x="4"  y="2"  width="8"  height="1"  fill="#ef4444"/>
-      <rect x="6"  y="4"  width="4"  height="1"  fill="#ef4444"/>
-      <rect x="7"  y="1"  width="1"  height="1"  fill="white" opacity="0.65"/>
-      <rect x="8"  y="2"  width="1"  height="1"  fill="white" opacity="0.4"/>`
-  },
-  {
-    group:1, name:"Dr. Mengjie Qian", role:"Voice Quality Project",
-    quote:"Ask Mengjie for a quote about our work together on the Voice Quality project!",
-    body:"#a78bfa", dark:"#7c3aed", light:"#ede9fe",
-    accessory:`
-      <rect x="6"  y="0"  width="4"  height="2"  fill="#c4b5fd"/>
-      <rect x="5"  y="2"  width="6"  height="2"  fill="#8b5cf6"/>
-      <rect x="6"  y="4"  width="4"  height="1"  fill="#7c3aed"/>
-      <rect x="7"  y="1"  width="2"  height="1"  fill="white" opacity="0.75"/>
-      <rect x="6"  y="2"  width="1"  height="1"  fill="#ddd6fe"/>
-      <rect x="5"  y="3"  width="1"  height="1"  fill="#ddd6fe"/>
-      <rect x="10" y="3"  width="1"  height="1"  fill="#ddd6fe"/>`
+      <rect x="7"  y="3"  width="2"  height="3"  fill="#16a34a"/>
+      <rect x="3"  y="1"  width="5"  height="3"  fill="#4ade80"/>
+      <rect x="8"  y="1"  width="5"  height="3"  fill="#4ade80"/>
+      <rect x="4"  y="1"  width="3"  height="1"  fill="#86efac"/>
+      <rect x="9"  y="1"  width="3"  height="1"  fill="#86efac"/>
+      <rect x="3"  y="3"  width="5"  height="1"  fill="#16a34a"/>
+      <rect x="8"  y="3"  width="5"  height="1"  fill="#16a34a"/>
+      <rect x="7"  y="0"  width="2"  height="2"  fill="#86efac"/>`
   },
   {
     group:1, name:"Dr. Lidea Shahidi", role:"Voice Quality Project",
     quote:"Ask Lidea for a quote about our work together on the Voice Quality project!",
+    gif:"assets/collaborators/lidea-shahidi.gif",
     body:"#2dd4bf", dark:"#0891b2", light:"#ccfbf1",
     accessory:`
       <rect x="6"  y="0"  width="4"  height="2"  fill="#f9a8d4"/>
@@ -1398,18 +1393,32 @@ const NPCS = [
       <rect x="7"  y="0"  width="2"  height="1"  fill="#fda4af"/>`
   },
   {
-    group:1, name:"Dr. Chenzi Xu", role:"Voice Quality Project",
-    quote:"Ask Chenzi for a quote about our work together on the Voice Quality project!",
-    body:"#4ade80", dark:"#16a34a", light:"#dcfce7",
+    group:1, name:"Dr. Mengjie Qian", role:"Voice Quality Project",
+    quote:"Ask Mengjie for a quote about our work together on the Voice Quality project!",
+    gif:"assets/collaborators/mengjie-qian.gif",
+    body:"#a78bfa", dark:"#7c3aed", light:"#ede9fe",
     accessory:`
-      <rect x="7"  y="3"  width="2"  height="3"  fill="#16a34a"/>
-      <rect x="3"  y="1"  width="5"  height="3"  fill="#4ade80"/>
-      <rect x="8"  y="1"  width="5"  height="3"  fill="#4ade80"/>
-      <rect x="4"  y="1"  width="3"  height="1"  fill="#86efac"/>
-      <rect x="9"  y="1"  width="3"  height="1"  fill="#86efac"/>
-      <rect x="3"  y="3"  width="5"  height="1"  fill="#16a34a"/>
-      <rect x="8"  y="3"  width="5"  height="1"  fill="#16a34a"/>
-      <rect x="7"  y="0"  width="2"  height="2"  fill="#86efac"/>`
+      <rect x="6"  y="0"  width="4"  height="2"  fill="#c4b5fd"/>
+      <rect x="5"  y="2"  width="6"  height="2"  fill="#8b5cf6"/>
+      <rect x="6"  y="4"  width="4"  height="1"  fill="#7c3aed"/>
+      <rect x="7"  y="1"  width="2"  height="1"  fill="white" opacity="0.75"/>
+      <rect x="6"  y="2"  width="1"  height="1"  fill="#ddd6fe"/>
+      <rect x="5"  y="3"  width="1"  height="1"  fill="#ddd6fe"/>
+      <rect x="10" y="3"  width="1"  height="1"  fill="#ddd6fe"/>`
+  },
+  {
+    group:1, name:"Dr. Charles McGhee", role:"Voice Quality Project",
+    quote:"Ask Charles for a quote about our work together on the Voice Quality project!",
+    gif:"assets/collaborators/charles-mcghee.gif",
+    body:"#f87171", dark:"#dc2626", light:"#fee2e2",
+    accessory:`
+      <rect x="7"  y="0"  width="2"  height="5"  fill="#fca5a5"/>
+      <rect x="5"  y="1"  width="6"  height="3"  fill="#fca5a5"/>
+      <rect x="6"  y="0"  width="4"  height="1"  fill="#ef4444"/>
+      <rect x="4"  y="2"  width="8"  height="1"  fill="#ef4444"/>
+      <rect x="6"  y="4"  width="4"  height="1"  fill="#ef4444"/>
+      <rect x="7"  y="1"  width="1"  height="1"  fill="white" opacity="0.65"/>
+      <rect x="8"  y="2"  width="1"  height="1"  fill="white" opacity="0.4"/>`
   }
 ];
 
@@ -1435,7 +1444,7 @@ function renderNPCs() {
       <div class="npc-grid">
         ${members.map(n => `
           <div class="npc-card" onclick="this.classList.toggle('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
-            <img class="npc-jump" src="${JUMP_GIF}" alt="">
+            <img class="npc-jump" src="${n.gif || JUMP_GIF}" alt="${n.name} animated pixel avatar">
             <div class="npc-name">${n.name}</div>
             <div class="npc-role">${n.role}</div>
             <div class="npc-quote">"${n.quote}"</div>
