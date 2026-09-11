@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duxiaojing-lingo.github.io/sitemap.xml
